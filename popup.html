@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SSH URL Copy Extension</title>
+    <style>
+      /* Add any styles you want to apply to your popup here */
+      body {
+        width: 200px; /* Adjust the popup width */
+        padding: 10px;
+      }
+      #copyButton {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SSH URL Copier</h1>
+    <p>
+      Click the button below to copy the ssh-url of a github repo to your
+      clipboard, or use ⌥⌘c as shortcut.
+    </p>
+    <!-- Button for copying the SSH URL -->
+    <button id="copyButton">Copy SSH URL</button>
+
+    <!-- Loading the script for handling button click -->
+    <script src="popup.js"></script>
+  </body>
+</html>
