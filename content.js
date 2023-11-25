@@ -11,10 +11,11 @@ function copySSHURL() {
   try {
     // Find the meta tag containing the repository NWO and get its content
     const repoNWO =
-      "github" +
+      "git@github.com:" +
       document.querySelector(
         'meta[name="octolytics-dimension-repository_network_root_nwo"]',
-      ).content;
+      ).content +
+      ".git";
 
     // Copying to clipboard
     navigator.clipboard.writeText(repoNWO).then(
