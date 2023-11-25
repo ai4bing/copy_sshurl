@@ -1,24 +1,28 @@
 // content.js
+// content.js
 document.addEventListener("keydown", function (e) {
   // Check for Option+Command+C (Alt+Meta+C) key combination
   if (e.altKey && e.metaKey && e.code === "KeyC") {
-    copySSHUrl();
+    copySSHURL();
   }
 });
 
-function copySSHUrl() {
+function copySSHURL() {
   try {
-    const sshUrl = document.querySelectorAll(
-      '[data-target="get-repo.modal"] tab-container input.form-control.input-monospace',
-    )[1].value;
+    // Find the meta tag containing the repository NWO and get its content
+    const repoNWO =
+      "github" +
+      document.querySelector(
+        'meta[name="octolytics-dimension-repository_network_root_nwo"]',
+      ).content;
 
-    // Copying to clipboard in Manifest V3
-    navigator.clipboard.writeText(sshUrl).then(
+    // Copying to clipboard
+    navigator.clipboard.writeText(repoNWO).then(
       function () {
-        console.log("SSH URL successfully copied");
+        console.log("Repository NWO successfully copied: " + repoNWO);
       },
       function (err) {
-        console.error("Error in copying SSH URL: ", err);
+        console.error("Error in copying repository NWO: ", err);
       },
     );
   } catch (error) {
