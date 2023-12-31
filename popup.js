@@ -1,14 +1,4 @@
 // popup.js
-document.getElementById("copyButton").addEventListener("click", function () {
-  // Send a message to the content script
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var activeTab = tabs[0];
-    chrome.scripting.executeScript({
-      target: { tabId: activeTab.id },
-      function: copySSHURL(),
-    });
-  });
-});
 
 // This function should match the function in your content script that copies the SSH URL
 function copySSHURL() {
