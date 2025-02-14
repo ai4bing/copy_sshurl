@@ -1,8 +1,12 @@
-// content.js
-document.addEventListener("keydown", function (e) {
-  if (e.altKey && e.metaKey && e.code === "KeyC") {
-    copySSHURL();
-  }
+document.getElementById("copy").addEventListener("click", async () => {
+  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  if (!tab?.id) return;
+
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: copySSHURL,
+  });
 });
 
 function copySSHURL() {
